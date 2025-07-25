@@ -1,0 +1,16 @@
+.sidebar{
+    height: 85svh;
+    width: 400px;
+    background: linear-gradient(
+    to top,
+    #ffa94d 0%,       /* Light orange */
+    #ff9a76 50%,      /* Soft peachy orange-red merge */
+    #ff6f61 100% 
+  );
+    margin: 30px 20px 0 auto;
+    padding: 20px;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,79 @@
+.taskContainerWrapper{
+background-color: var(--color-bg-light);
+  padding: 20px;
+  border-radius: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  height: 85svh;
+  width: calc(100% - 500px);
+  margin: 30px 50px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+}
+
+.taskContainerWrapper h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.taskContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  gap: 10px;
+}
+
+.taskContainerWrapper::-webkit-scrollbar {
+    width: 15px;
+}
+
+.taskContainerWrapper::-webkit-scrollbar-track {
+    background: var(--color-secondary-light);
+    border-radius: 10px;
+}
+.taskContainerWrapper::-webkit-scrollbar-thumb {
+    background: var(--color-primary-light);
+    border-radius: 10px;
+}
+
+.taskContainerWrapper h1 {
+    font-family: var(--font-heading);
+    color: var(--font-color-text-heading);
+    margin-bottom: 20px;
+    font-size: 4rem;
+    text-align: center;
+}
+
+.task{
+    background-color: var(--color-accent-light);
+    border-radius: 1rem;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    overflow-x: hidden;
+}
+
+.task:not(.task:hover) {
+    transform: scale(0.95);
+}
+.task:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.task:hover h2 {
+    color: var(--color-primary-light);
+}
+
+.task h2 {
+    font-family: var(--font-heading);
+    color: var(--font-color-text-heading);
+    font-size: 2rem;
+    transition: all 0.2s ease;
+    text-align: center;
+}

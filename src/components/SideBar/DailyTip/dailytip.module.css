@@ -1,0 +1,18 @@
+.dailyTip{
+    margin: 20px 0;
+}
+
+.dailyTip h3{
+    font-size: 2rem;
+    font-family: var(--font-heading);
+    color: var(--color-primary-light);
+    letter-spacing: 0.01em;
+}
+
+.dailyTip p{
+    font-size: 1.2rem;
+    font-family: var(--font-body);
+    color: var(--font-color-text-body);
+    margin-top: 10px;
+    line-height: 1.6;
+}
