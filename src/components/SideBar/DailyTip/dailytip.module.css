@@ -1,18 +1,69 @@
-.dailyTip{
+.dailyTip {
     margin: 20px 0;
 }
 
-.dailyTip h3{
-    font-size: 2rem;
+.dailyTip h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-family: var(--font-heading);
     color: var(--color-primary-light);
     letter-spacing: 0.01em;
+    margin-bottom: 8px;
 }
 
-.dailyTip p{
-    font-size: 1.2rem;
+.dailyTip p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
     font-family: var(--font-body);
     color: var(--font-color-text-body);
     margin-top: 10px;
     line-height: 1.6;
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .dailyTip {
+        margin: 15px 0;
+    }
+    
+    .dailyTip h3 {
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+    }
+    
+    .dailyTip p {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        line-height: 1.5;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .dailyTip {
+        margin: 12px 0;
+    }
+    
+    .dailyTip h3 {
+        font-size: clamp(1.2rem, 4vw, 1.6rem);
+        margin-bottom: 6px;
+    }
+    
+    .dailyTip p {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+        line-height: 1.4;
+        margin-top: 8px;
+    }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+    .dailyTip {
+        margin: 10px 0;
+    }
+    
+    .dailyTip h3 {
+        font-size: clamp(1.1rem, 5vw, 1.4rem);
+    }
+    
+    .dailyTip p {
+        font-size: clamp(0.8rem, 4vw, 0.95rem);
+        line-height: 1.3;
+    }
 }

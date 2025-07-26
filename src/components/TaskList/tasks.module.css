@@ -1,27 +1,28 @@
-.taskContainerWrapper{
-background-color: var(--color-bg-light);
-  padding: 20px;
-  border-radius: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  height: 85svh;
-  width: calc(100% - 500px);
-  margin: 30px 50px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  overflow-y: auto;
+.taskContainerWrapper {
+    background-color: var(--color-bg-light);
+    padding: 20px;
+    border-radius: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    height: 85svh;
+    width: calc(100% - 450px);
+    margin: 30px 20px 30px 50px;
+    overflow-y: auto;
+    flex: 1;
 }
 
 .taskContainerWrapper h1 {
-    font-size: 4rem;
+    font-family: var(--font-heading);
+    color: var(--font-color-text-heading);
+    font-size: clamp(2.5rem, 4vw, 4rem);
     text-align: center;
     margin-bottom: 20px;
 }
 
 .taskContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: start;
-  gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    align-items: start;
+    gap: 15px;
 }
 
 .taskContainerWrapper::-webkit-scrollbar {
@@ -32,48 +33,137 @@ background-color: var(--color-bg-light);
     background: var(--color-secondary-light);
     border-radius: 10px;
 }
+
 .taskContainerWrapper::-webkit-scrollbar-thumb {
     background: var(--color-primary-light);
     border-radius: 10px;
 }
 
-.taskContainerWrapper h1 {
-    font-family: var(--font-heading);
-    color: var(--font-color-text-heading);
-    margin-bottom: 20px;
-    font-size: 4rem;
-    text-align: center;
-}
-
-.task{
+.task {
     background-color: var(--color-accent-light);
     border-radius: 1rem;
-    margin-bottom: 20px;
+    padding: 15px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
     height: 100px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
     transition: all 0.2s ease;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .task:not(.task:hover) {
-    transform: scale(0.95);
+    transform: scale(0.98);
 }
+
 .task:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     cursor: pointer;
 }
 
-.task:hover h2 {
+.task:hover h2, .task:hover p {
     color: var(--color-primary-light);
 }
 
 .task h2 {
     font-family: var(--font-heading);
     color: var(--font-color-text-heading);
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
     transition: all 0.2s ease;
     text-align: center;
+    width: 100%;
+    word-wrap: break-word;
+    line-height: 1.2;
+}
+
+.task p{
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+/* Large tablet styles */
+@media (max-width: 1200px) {
+    .taskContainerWrapper {
+        width: calc(100% - 350px);
+        margin: 20px 10px 20px 30px;
+    }
+    
+    .taskContainer {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 12px;
+    }
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .taskContainerWrapper {
+        width: calc(100% - 320px);
+        margin: 20px 10px 20px 20px;
+        padding: 15px;
+    }
+    
+    .taskContainer {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 10px;
+    }
+    
+    .task {
+        height: 90px;
+        padding: 12px;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .taskContainerWrapper {
+        width: 100%;
+        height: auto;
+        min-height: 60vh;
+        margin: 15px 0 0 0;
+        padding: 15px;
+        border-radius: 1.5rem;
+        order: 2; /* Place tasks after sidebar on mobile */
+    }
+    
+    .taskContainerWrapper h1 {
+        font-size: clamp(2rem, 6vw, 3rem);
+        margin-bottom: 15px;
+    }
+    
+    .taskContainer {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+    }
+    
+    .task {
+        height: 80px;
+        padding: 10px;
+    }
+    
+    .task h2 {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+    }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+    .taskContainerWrapper {
+        margin: 10px 0 0 0;
+        padding: 10px;
+        border-radius: 1rem;
+    }
+    
+    .taskContainer {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .task {
+        height: 70px;
+        padding: 8px;
+    }
+    
+    .task h2 {
+        font-size: clamp(0.9rem, 4vw, 1.2rem);
+    }
 }

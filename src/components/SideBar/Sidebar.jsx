@@ -9,7 +9,7 @@ const MemoDailyTip = React.memo(DailyTip);
 export default function Sidebar() {
   return (
     <div className={style.sidebar}>
-        <MemoQuote />
+        <MemoQuote main={true}/>
         <MemoDailyTip />
     </div>
   );

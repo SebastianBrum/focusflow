@@ -1,41 +1,86 @@
-  :root {
+:root {
     /* Light Mode */
     --color-bg-light: #fdf6e3;
     --color-primary-light: #87CEEB;
     --color-secondary-light: #333333;
     --color-accent-light: #fca07e;
 
-      --font-heading: 'Montserrat', sans-serif;
-      --font-body: 'Roboto', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Roboto', sans-serif;
 
-      --font-color-text-body: 	#333333;
-      --font-color-text-heading: #111827;
-      --font-color-text-secondary: #6B7280;
-    }
+    --font-color-text-body: #333333;
+    --font-color-text-heading: #111827;
+    --font-color-text-secondary: #6B7280;
+}
 
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    body{
-        height: 100svh;
-        width: 100%;
-        background: linear-gradient(
-      135deg,
-      #fff9e6 0%, 
-      #fff3b0 50%,  
-      #fff9e6 100%
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100svh;
+    width: 100%;
+    background: linear-gradient(
+        135deg,
+        #fff9e6 0%, 
+        #fff3b0 50%,  
+        #fff9e6 100%
     );
     overflow-y: hidden;
-    }
+}
 
+.main-layout {
+    display: flex;
+    flex-direction: row;
+    height: calc(100svh - 70px); /* subtract navbar height */
+    gap: 0;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+
+*::-webkit-scrollbar {
+    width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--color-secondary-light);
+    border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--color-primary-light);
+    border-radius: 10px;
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
     .main-layout {
-      display: flex;
-      height: calc(100svh - 60px); /* subtract navbar height */
+        height: calc(100svh - 60px);
     }
+}
 
-    *::selection {
-      background: yellow;
-      color: red;
+/* Mobile styles */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
     }
+    
+    .main-layout {
+        flex-direction: column;
+        height: auto;
+        min-height: calc(100svh - 50px);
+    }
+}
+
+*::selection {
+    background: yellow;
+    color: red;
+}

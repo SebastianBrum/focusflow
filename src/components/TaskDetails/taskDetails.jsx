@@ -1,13 +1,16 @@
 import style from './taskDetails.module.css';
 import Button from '../button.jsx';
-import Pomodoro from './Pomodoro.jsx';
-import { useState } from 'react';
+import Pomodoro from './Pomodoro clock/Pomodoro.jsx';
+import Quote from '../SideBar/InspirationalQuote/InspirationalQuote.jsx'
+import React, { useState } from 'react';
+
+const MemoQuote = React.memo(Quote);
 
 
 export default function TaskDetails({ id, tasks, onClose, onCompleted}) {
     const [pomodoroTime, setPomodoroTime] = useState({
-        work: 25,
-        break: 5
+        work: 15,
+        break: 3
     });
     const task = tasks.find(t => t.id === id);
     const pomodoroOptions = [
@@ -34,24 +37,29 @@ export default function TaskDetails({ id, tasks, onClose, onCompleted}) {
     return (
         <div className={style["task-details"]}>
             <h2>{task.title}</h2>
-            <h4>{task.category}</h4>
-            <p>{task.dateComplete}</p>
+            <p>Date to complete : {task.dateComplete}</p>
+            <Pomodoro initialMinutes={pomodoroTime.work} initialSeconds={0} handlePomodoroChange={handlePomodoroChange} pomodoroOptions={pomodoroOptions}/>
+            <div className={style['bottom-container']}>
+            <div className={style.description}>
+                <h3>Description</h3>
             <ul>
-                {task.description.map((description, index) => (
-                    <li key={index}>{description}</li>
+                {task.description.length > 0 && task.description.map((description, index) => (
+                    <div className={style.descriptionList}>
+                      <li key={index}>{description}</li>
+                      <input type='checkbox'/>
+                    </div>
                 ))}
-            </ul>
-            <select onChange={handlePomodoroChange}>
-                {pomodoroOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                        {option.label}
-                    </option>
-                ))}
-            </select>
+
+            </ul>   
+            </div>
+            <div className={style['functions']}>
+            <MemoQuote main={false}/>
+            <div className={style['function-buttons']}>
             <Button onClick={onClose}>Close</Button>
-            <Button onClick={() => {onClose(); onCompleted(task.id)}}>Completed</Button>   
-            <Button>Edit</Button>
-            <Pomodoro initialMinutes={pomodoroTime.work} initialSeconds={0}/>
+            <Button onClick={() => {onClose(); onCompleted(task.id)}}>Completed</Button>
+            </div>
+            </div>
+            </div>
         </div>
     )
 }           

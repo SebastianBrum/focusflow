@@ -1,22 +1,80 @@
-.inspirationalQuote{
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.inspirationalQuote h2{
-  font-size: 2rem;
-  font-family: var(--font-heading);
-  color: var(--color-primary-light);
-  line-height: 1.3;
-  letter-spacing: 0.01em;
+.inspirationalQuote {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.inspirationalQuote p{
-  font-size: 1.2rem;
-  font-family: var(--font-body);
-  color: var(--font-color-text-body);
-  line-height: 1.6;
-  text-align: justify;
-  text-wrap: pretty;
+.inspirationalQuote h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-family: var(--font-heading);
+    color: var(--color-primary-light);
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    margin-bottom: 5px;
+}
+
+.inspirationalQuote p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-family: var(--font-body);
+    color: var(--font-color-text-body);
+    line-height: 1.6;
+    text-align: justify;
+    text-wrap: pretty;
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .inspirationalQuote {
+        margin: 15px 0;
+        gap: 8px;
+    }
+    
+    .inspirationalQuote h2 {
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+        line-height: 1.2;
+    }
+    
+    .inspirationalQuote p {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        line-height: 1.5;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .inspirationalQuote {
+        margin: 12px 0;
+        gap: 6px;
+    }
+    
+    .inspirationalQuote h2 {
+        font-size: clamp(1.2rem, 4vw, 1.6rem);
+        line-height: 1.2;
+        margin-bottom: 4px;
+    }
+    
+    .inspirationalQuote p {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+        line-height: 1.4;
+        text-align: left;
+    }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+    .inspirationalQuote {
+        margin: 10px 0;
+        gap: 5px;
+    }
+    
+    .inspirationalQuote h2 {
+        font-size: clamp(1.1rem, 5vw, 1.4rem);
+        line-height: 1.1;
+    }
+    
+    .inspirationalQuote p {
+        font-size: clamp(0.8rem, 4vw, 0.95rem);
+        line-height: 1.3;
+    }
 }

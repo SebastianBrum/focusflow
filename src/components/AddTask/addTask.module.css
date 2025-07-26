@@ -1,56 +1,94 @@
-.addTask-container {
+
+/* addTask.module.css */
+
+/* Modal overlay for better mobile experience */
+.modal-overlay {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90vw;
-    height: 95%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.addTask-container {
+    width: 100%;
+    height: auto;
     max-width: 500px;
+    max-height: 90vh;
     background-color: rgba(255, 127, 80, 0.25); 
-    --webkit-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border-radius: 1rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    padding: 20px;
     z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-header {
+    position: relative;
+    padding: 1rem;
+    flex-shrink: 0;
+}
+
+.modal-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-section {
     display: flex;
     flex-direction: column;
 }
 
-#back{
-    top: 0;
-    left: 0;
-    width: 60px;
-    height: 30px;
+#back {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background-color: red;
-    border-radius: 1rem;
+    border-radius: 50%;
     border: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    display: block;
-    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: 0.2s ease;
+    z-index: 10;
 }
 
-#back:hover{
+#back:hover {
     cursor: pointer;
     transform: scale(1.08);
 }
 
 .addTask-container h1 {
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 5vw, 3rem);
     font-family: var(--font-heading);
     color: var(--color-primary-light);
-    display: block;
     text-align: center;
     text-decoration: underline; 
-    margin-bottom: 20px;
+    margin: 0;
+    padding-right: 3rem; /* Account for close button */
 }
 
 .addTask-container label {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     font-family: var(--font-body);
     color: var(--font-color-text-body);
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
     border-bottom: 2px solid var(--font-color-text-body);
     width: fit-content;
 }
@@ -58,70 +96,225 @@
 .addTask-container input[type="text"],
 .addTask-container input[type="date"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: clamp(0.75rem, 2.5vw, 1rem);
     border: 1px solid var(--color-secondary-light);
     border-radius: 0.5rem;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
     font-family: var(--font-body);
     border: 3px solid transparent;
     transition: all 0.3s ease;
+    min-height: 44px; /* Ensure touch-friendly targets */
 }
 
 .addTask-container input[type="text"]:focus,
 .addTask-container input[type="date"]:focus {
     outline: none;
     border: 3px solid var(--color-primary-light);
-    scale: 1.02;
+    transform: scale(1.02);
 }
 
 .task-importance {
     display: flex;
     flex-direction: column;
 }
-.task-importance h4{
+
+.task-importance h4 {
     font-family: var(--font-body);
     color: var(--font-color-text-body);
     font-weight: 200;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    margin-bottom: 0.75rem;
     border-bottom: 2px solid var(--font-color-text-body);
-    width:fit-content;
+    width: fit-content;
 }
 
-.task-importance label{
+.importance-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.task-importance label {
     font-family: var(--font-body);
     color: var(--font-color-text-body);
     font-weight: 100;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
     border: none;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease;
+    min-height: 44px;
+}
+
+.task-importance label:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .task-importance input[type="radio"] {
-   margin-right: 10px;
+    margin-right: 0.75rem;
+    transform: scale(1.2);
 }
 
-#add-task, .task-description button{
+#add-task, 
+.task-description button {
     background-color: var(--color-primary-light);
     color: white;
     border: none;
     border-radius: 0.5rem;
-    padding: 10px 20px;
-    font-size: 1.2rem;
+    padding: clamp(0.75rem, 2.5vw, 1rem) clamp(1rem, 4vw, 1.5rem);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     font-family: var(--font-body);
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-#add-task{
-    margin-top: 20px
+    transition: all 0.3s ease;
+    min-height: 44px;
+    width: 100%;
 }
 
 .task-description {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    gap: 0.75rem;
 }
-.addTask-container button:hover, .task-description button:hover {
-    transform: scale(1.05);
+
+.addTask-container button:hover, 
+.task-description button:hover {
+    transform: scale(1.02);
+}
+
+/* Tablet breakpoint */
+@media (min-width: 768px) {
+    .modal-overlay {
+        padding: 2rem;
+    }
+    
+    .addTask-container {
+        max-width: 600px;
+    }
+    
+    .modal-header {
+        padding: 1.5rem;
+    }
+    
+    .modal-content {
+        padding: 0 1.5rem 1.5rem;
+        gap: 1.5rem;
+    }
+    
+    .importance-options {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .task-importance label {
+        flex: 1;
+        min-width: 150px;
+        justify-content: center;
+    }
+    
+    .task-description {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 1rem;
+    }
+    
+    .task-description input {
+        flex: 1;
+        margin-bottom: 0;
+    }
+    
+    .task-description button {
+        width: auto;
+        white-space: nowrap;
+    }
+}
+
+/* Desktop breakpoint */
+@media (min-width: 1024px) {
+    .addTask-container {
+        max-width: 700px;
+    }
+    
+    .modal-header {
+        padding: 2rem;
+    }
+    
+    .modal-content {
+        padding: 0 2rem 2rem;
+        gap: 2rem;
+    }
+    
+    .importance-options {
+        gap: 1.5rem;
+    }
+    
+    #add-task {
+        width: auto;
+        align-self: center;
+        min-width: 200px;
+    }
+}
+
+/* Large desktop breakpoint */
+@media (min-width: 1440px) {
+    .addTask-container {
+        max-width: 800px;
+    }
+}
+
+/* Mobile landscape optimization */
+@media (max-height: 600px) and (orientation: landscape) {
+    .addTask-container {
+        max-height: 95vh;
+    }
+    
+    .modal-header {
+        padding: 0.75rem;
+    }
+    
+    .modal-content {
+        gap: 0.75rem;
+        padding: 0 0.75rem 0.75rem;
+    }
+    
+    .addTask-container h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .addTask-container {
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .addTask-container input[type="text"]:focus,
+    .addTask-container input[type="date"]:focus {
+        transform: none;
+    }
+    
+    .addTask-container button:hover, 
+    .task-description button:hover {
+        transform: none;
+    }
+    
+    #back:hover {
+        transform: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .modal-overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .addTask-container {
+        background-color: rgba(40, 40, 40, 0.9);
+    }
 }

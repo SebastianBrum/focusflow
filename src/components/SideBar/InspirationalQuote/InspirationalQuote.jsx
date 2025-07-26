@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import style from './inpirationalQuote.module.css';
 
-export default function Quote() {
+export default function Quote({ main }) {
   const [inspirationalQuote, setInspirationalQuote] = useState({
     text: "",
     author: "",
@@ -29,6 +29,7 @@ export default function Quote() {
 
     fetchQuote();
   }, []);
+  if(main){
   return(
     <div className={style.inspirationalQuote}>
       <h2>
@@ -37,5 +38,12 @@ export default function Quote() {
         <strong><p>"{inspirationalQuote.text}"</p></strong>
         <p>- {inspirationalQuote.author}</p>
     </div>
-  )
+  )}else{
+    return(
+      <>
+      <strong><p>"{inspirationalQuote.text}"</p></strong>
+      <p>- {inspirationalQuote.author}</p>
+      </>
+    )
+  }
 }

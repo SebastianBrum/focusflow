@@ -8,8 +8,10 @@ export default function Tasks({ onClick, tasks}) {
             {tasks.map((task) => (
             <div key={task.id} className={style.task} onClick={() => onClick(task.id)}>
                 <h2>{task.title}</h2>
+                {task.category !== '' && <p>-{task.category}</p>}
             </div>
         ))}
+        
         </div>
         </div> 
     )

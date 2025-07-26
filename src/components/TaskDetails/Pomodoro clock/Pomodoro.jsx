@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import Button from "../button";
+import Button from "../../button";
+import style from './pomodoro.module.css'
 
-export default function Pomodoro({ initialMinutes, initialSeconds }) {
+export default function Pomodoro({ initialMinutes, initialSeconds, handlePomodoroChange, pomodoroOptions }) {
   const [totalSeconds, setTotalSeconds] = useState(
     initialMinutes * 60 + initialSeconds
   );
@@ -9,7 +10,7 @@ export default function Pomodoro({ initialMinutes, initialSeconds }) {
 
   useEffect(() => {
     setTotalSeconds(initialMinutes * 60 + initialSeconds);
-    stopTimer(); // Optional: auto-stop timer when duration changes
+    stopTimer();
   }, [initialMinutes, initialSeconds]);
 
   const startTimer = () => {
@@ -45,11 +46,21 @@ export default function Pomodoro({ initialMinutes, initialSeconds }) {
   const displaySeconds = seconds < 10 ? "0" + seconds : seconds;
 
   return (
-    <div>
+    <div className={style.pomodoro}>
+      <label htmlFor='time-select'>Work/Break time</label>
+            <select onChange={handlePomodoroChange} id='time-select'>
+                {pomodoroOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                        {option.label}
+                    </option>
+                ))}
+            </select>
       <h3>{displayMinutes}:{displaySeconds}</h3>
+      <div className={style['buttons-container']}>
       <Button onClick={startTimer}>Start Timer</Button>
       <Button onClick={stopTimer}>Stop Timer</Button>
       <Button onClick={resetTimer}>Reset Timer</Button>
+      </div>
     </div>
   );
 }

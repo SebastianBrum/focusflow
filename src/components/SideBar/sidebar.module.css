@@ -1,16 +1,59 @@
-.sidebar{
+.sidebar {
     height: 85svh;
     width: 400px;
     background: linear-gradient(
-    to top,
-    #ffa94d 0%,       /* Light orange */
-    #ff9a76 50%,      /* Soft peachy orange-red merge */
-    #ff6f61 100% 
-  );
+        to top,
+        #ffa94d 0%,
+        #ff9a76 50%,
+        #ff6f61 100% 
+    );
     margin: 30px 20px 0 auto;
     padding: 20px;
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+}
+
+/* Large tablet styles */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 320px;
+        margin: 20px 10px 0 10px;
+        padding: 18px;
+    }
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 300px;
+        margin: 20px 10px 0 10px;
+        padding: 15px;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        min-height: 300px;
+        margin: 0;
+        padding: 15px;
+        border-radius: 1.5rem;
+        order: 1; /* Place sidebar before tasks on mobile */
+        flex-shrink: 1;
+    }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+    .sidebar {
+        margin: 0;
+        padding: 12px;
+        border-radius: 1rem;
+        min-height: 250px;
+    }
 }

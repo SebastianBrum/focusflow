@@ -1,4 +1,4 @@
-export default function Input({ type, id, onChange, placeholder, name }) {
+export default function Input({ type, id, onChange, placeholder, name, required }) {
      if (type === 'radio') {
     return (
       <label>
@@ -13,10 +13,10 @@ export default function Input({ type, id, onChange, placeholder, name }) {
     );
   }else{
     return (
-        <>
+        <div className="inputs">
         <label htmlFor={id}>{placeholder}</label>
-        <input type={type} id={id} onChange={onChange} placeholder={placeholder}/>
-        </>
+        <input type={type} id={id} onChange={onChange} placeholder={placeholder} required={required}/>
+        </div>
     )
 }
 }
