@@ -1,11 +1,13 @@
-// addTask.jsx
 import { useEffect, useState } from 'react';
 import style from './addTask.module.css';
 import Input from '../input.jsx';
 import Button from '../button.jsx';
 
 export default function AddTask({ onClose, setTask, task, handleSubmit }) {
+    // Local state for description input to handle multiple descriptions
     const [descriptionInput, setDescriptionInput] = useState('');
+    
+    // Configuration object for all form inputs with their properties
     const inputValues = {
         title: {
             type: 'text', 
@@ -32,6 +34,7 @@ export default function AddTask({ onClose, setTask, task, handleSubmit }) {
             onChange: (e) => setTask(prev => ({...prev, category: e.target.value})),
             placeholder: 'Category'
         },
+        // Radio button group for task importance levels
         highImportance: {
             type: 'radio', 
             id: 'task-importance-high', 
@@ -55,6 +58,7 @@ export default function AddTask({ onClose, setTask, task, handleSubmit }) {
         }
     };
 
+    // Add event listener for ESC key to close modal
     useEffect(() => {
         const handleEscape = (e) => {
             if (e.key === 'Escape') {
@@ -63,19 +67,24 @@ export default function AddTask({ onClose, setTask, task, handleSubmit }) {
         };
 
         document.addEventListener('keydown', handleEscape);
+        // Cleanup event listener on component unmount
         return () => {
             document.removeEventListener('keydown', handleEscape);
         };
     }, [onClose]);
 
+    // Function to add description to the task's description array
     function handleDescriptionAdd() {
+        // Don't add empty descriptions
         if (descriptionInput.trim() === '') return;
 
+        // Add description to task state (handles both array and non-array cases)
         setTask(prev => ({
             ...prev,
             description: [...(Array.isArray(prev.description) ? prev.description : []), descriptionInput]
         }));
 
+        // Clear the input field and refocus for multiple entries
         setDescriptionInput('');
         document.getElementById('task-description').value = '';
         document.getElementById('task-description').focus();
@@ -84,6 +93,7 @@ export default function AddTask({ onClose, setTask, task, handleSubmit }) {
     return(
         <div className={style["modal-overlay"]}>
             <div className={style["addTask-container"]}>
+                {/* Modal header with close button */}
                 <div className={style["modal-header"]}>
                     <Button onClick={onClose} id={style['back']}>
                         <span className="material-symbols-outlined">
@@ -94,10 +104,12 @@ export default function AddTask({ onClose, setTask, task, handleSubmit }) {
                 </div>
                 
                 <div className={style["modal-content"]}>
+                    {/* Task title input */}
                     <div className={style["form-section"]}>
                         <Input {...inputValues.title} />
                     </div>
                     
+                    {/* Description input with add button */}
                     <div className={style["form-section"]}>
                         <div className={style['task-description']}>
                             <Input {...inputValues.description} />
@@ -105,14 +117,17 @@ export default function AddTask({ onClose, setTask, task, handleSubmit }) {
                         </div>
                     </div>
                     
+                    {/* Date picker */}
                     <div className={style["form-section"]}>
                         <Input {...inputValues.date} />
                     </div>
                     
+                    {/* Category input */}
                     <div className={style["form-section"]}>
                         <Input {...inputValues.category} />
                     </div>
                     
+                    {/* Importance level radio buttons */}
                     <div className={style["form-section"]}>
                         <div className={style['task-importance']}>
                             <h4>Task importance</h4>
@@ -124,6 +139,7 @@ export default function AddTask({ onClose, setTask, task, handleSubmit }) {
                         </div>
                     </div>
                     
+                    {/* Submit button */}
                     <div className={style["form-section"]}>
                         <Button onClick={() => {handleSubmit(task); onClose();}} id={style['add-task']}>
                             Submit

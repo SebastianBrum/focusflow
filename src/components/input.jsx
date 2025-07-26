@@ -1,4 +1,5 @@
 export default function Input({ type, id, onChange, placeholder, name, required }) {
+     // Render radio button with label
      if (type === 'radio') {
     return (
       <label>
@@ -12,6 +13,7 @@ export default function Input({ type, id, onChange, placeholder, name, required 
       </label>
     );
   }else{
+    // Render regular input with label
     return (
         <div className="inputs">
         <label htmlFor={id}>{placeholder}</label>

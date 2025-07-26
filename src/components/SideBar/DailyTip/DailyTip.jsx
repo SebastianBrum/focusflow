@@ -1,6 +1,7 @@
 import style from './dailytip.module.css';
 
 export default function DailyTip() {
+    // Array of productivity tips
     const productivityTips = [
   "Take a 5-minute break every hour.",
   "Write down your top 3 priorities each day.",
@@ -29,9 +30,9 @@ export default function DailyTip() {
   "Automate repetitive tasks where possible.",
   "Delegate tasks when appropriate.",
   "Set boundaries to protect your focus time.",
-  "Use ‘Do Not Disturb’ mode on your devices.",
+  "Use 'Do Not Disturb' mode on your devices.",
   "Reward yourself after completing difficult tasks.",
-  "Reflect weekly on what’s working and what’s not.",
+  "Reflect weekly on what's working and what's not.",
   "Stay positive and practice self-compassion.",
   "Visualize your goals to stay motivated.",
   "Use checklists to track progress.",
@@ -51,7 +52,9 @@ export default function DailyTip() {
   "Review and adjust your goals regularly.",
   "Celebrate small wins to stay motivated."
 ];
+// Select a random tip each time component renders
 const randomTip = productivityTips[Math.floor(Math.random() * productivityTips.length)];
+
 return(
     <div className={style.dailyTip}>
       <h3>Daily Tip :</h3>
