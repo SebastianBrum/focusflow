@@ -17,7 +17,7 @@ export default function Input({ type, id, onChange, placeholder, name, required 
     return (
         <div className="inputs">
         <label htmlFor={id}>{placeholder}</label>
-        <input type={type} id={id} onChange={onChange} placeholder={placeholder} required={required}/>
+        <input type={type} id={id} onChange={onChange} placeholder={placeholder}/>
         </div>
     )
 }

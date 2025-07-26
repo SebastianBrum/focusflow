@@ -20,19 +20,22 @@ export default function AddTask({ onClose, setTask, task, handleSubmit }) {
             type: 'text', 
             id: 'task-description', 
             onChange: (e) => setDescriptionInput(e.target.value),
-            placeholder: 'Description'
+            placeholder: 'Description',
+            required: false
         },
         date: {
             type: 'date', 
             id: 'task-date-complete', 
             onChange: (e) => setTask(prev => ({...prev, dateComplete: e.target.value})),
-            placeholder: 'Date to complete'
+            placeholder: 'Date to complete',
+            required: false
         },
         category: {
             type: 'text', 
             id: 'task-category', 
             onChange: (e) => setTask(prev => ({...prev, category: e.target.value})),
-            placeholder: 'Category'
+            placeholder: 'Category',
+            required: false
         },
         // Radio button group for task importance levels
         highImportance: {
@@ -40,21 +43,24 @@ export default function AddTask({ onClose, setTask, task, handleSubmit }) {
             id: 'task-importance-high', 
             onChange: () => setTask(prev => ({...prev, importance: 'high'})),
             placeholder: 'High Importance',
-            name: 'task-importance'
+            name: 'task-importance',
+            required: false
         },
         mediumImportance: {
             type: 'radio', 
             id: 'task-importance-medium', 
             onChange: () => setTask(prev => ({...prev, importance: 'medium'})),
             placeholder: 'Medium Importance',
-            name: 'task-importance'
+            name: 'task-importance',
+            required: false
         },
         lowImportance: {
             type: 'radio', 
             id: 'task-importance-low', 
             onChange: () => setTask(prev => ({...prev, importance: 'low'})),
             placeholder: 'Low Importance',
-            name: 'task-importance'
+            name: 'task-importance',
+            required: false
         }
     };
 
@@ -141,7 +147,16 @@ export default function AddTask({ onClose, setTask, task, handleSubmit }) {
                     
                     {/* Submit button */}
                     <div className={style["form-section"]}>
-                        <Button onClick={() => {handleSubmit(task); onClose();}} id={style['add-task']}>
+                        <Button onClick={() =>
+                            {   if (task.title === '') {
+                                document.getElementById('task-title').focus();
+                                return;
+                            }
+                                handleSubmit(task);
+                                 onClose();
+                                }
+                            }
+                            id={style['add-task']}>
                             Submit
                         </Button>
                     </div>
