@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+# 🧠 FocusFlow
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A simple and motivating Pomodoro timer + task tracker built to help you stay focused and get things done.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🌟 Inspiration
 
-### `npm start`
+While learning React, I found myself constantly distracted and jumping between tasks. I wanted to build something that would not only help me stay on track, but also let me practice what I was learning. That’s how FocusFlow was born — a small project to solve a real problem I was facing.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ✨ What It Does
 
-### `npm test`
+FocusFlow is a Pomodoro-style productivity app. It lets you:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Start 25-minute focus sessions with built-in breaks
+- Add and manage your daily tasks
+- Read motivational quotes (fetched from an API)
+- Get daily tips to stay productive
+- Enjoy a calm, focus-friendly design with optional dark mode
 
-### `npm run build`
+The app uses color combinations and a minimal layout to promote calm and reduce distractions while you work.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ How I Built It
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project was built using:
 
-### `npm run eject`
+- **React** – to build reusable, component-based UI
+- **JavaScript** – for timer logic, state updates, and interactions
+- **CSS** – for styling, gradients, and layout
+- **React Hooks** – like `useState` and `useEffect` to handle logic and side effects
+- **LocalStorage** – to save your tasks so they don’t disappear on refresh
+- **ZenQuotes API** – for the daily motivational quote
+- **VITechLab** – used for hosting the project
+- **Git & GitHub** – for version control and backups
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🧩 Challenges I Faced
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+There were quite a few! Passing props between components was tricky at first, and I had to learn how to manage state across multiple parts of the app. I also ran into issues with task IDs — using array indexes caused some bugs when updating or deleting tasks. Eventually, I solved it by generating unique IDs based on the current date and time.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Design was another challenge — keeping things simple but useful took a few tries, but I’m really happy with how it turned out.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## ✅ What I’m Proud Of
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This was my first time using an API in a real project, and it worked! I also learned the value of organizing files and components properly — once the app got bigger, good structure made everything easier to manage. Overall, I learned a ton about React and actually enjoyed debugging for once.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📚 What I Learned
 
-### Analyzing the Bundle Size
+- React state and props flow
+- Hooks like `useEffect` for timers and side effects
+- How to persist data using localStorage
+- Structuring real-world React projects with many components
+- The basics of fetching data from an external API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🚀 What’s Next
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+There’s a lot more I want to do with FocusFlow, including:
 
-### Advanced Configuration
+- A history view for completed tasks
+- A streak system to track daily focus habits
+- Task syncing across devices
+- Group features for shared task boards (e.g. roommates, study groups)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 🖼️ Screenshot
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![FocusFlow Screenshot](link-to-screenshot.png)
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 💻 Getting Started
+
+If you’d like to try it out locally:
+
+```bash
+git clone https://github.com/your-username/focusflow.git
+cd focusflow
+npm install
+npm run dev
